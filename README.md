@@ -25,10 +25,12 @@ h. Move this file to your working directory and rename it `client_secret.json`.
 i. Generate auth token by using this [script](https://github.com/kumar-ideas2it/node-gdrive-utils/blob/developement/lib/generateToken.js) and move `auth_token.json` file to your working directory
 
 
-```npm install --save gdrive-utils ```
+```shell
+npm install --save gdrive-utils
+```
 
 ## Create service
-```
+```js
 var GDriveUtil = require("gdrive-utils");
 var client_secret = require('./client_secret.json')
 var auth_token = require('./auth_token.json')
@@ -42,7 +44,7 @@ var gdriveUtil = new GDriveUtil(client_secret, auth_token);
 - listFiles(cb)
 get file list
 
-```
+```js
 gdriveUtil.listFiles(function(err, files) {
         // write your code here
 });
@@ -52,14 +54,14 @@ gdriveUtil.listFiles(function(err, files) {
 
 create a file on your drive
 
-```
+```js
 gdriveUtil.createFile('files/file.png' ,function(err, res) {
         // write your code here
 });
 ```
 (or)
 
-```
+```js
 gdriveUtil.createFile({
     fileUrl: 'files/file.png',
     folderName: 'folderName'
@@ -70,12 +72,34 @@ gdriveUtil.createFile({
 params: options{ fileUrl, folderName } (or) filepath
 If you want to create a file on you base path, you can give your file path directly. Otherwise you want to create a file in particular directory, give {fileUrl, folderName}.
 
+
+- getFiles(cb)
+
+This method is used to download all files from your drive
+
+```js
+gdriveUtil.getFiles(function(err, res) {
+        // write your code here
+});
+```
+
+- getFileByName(cb)
+
+This method is used to download file by it's name from your drive
+
+```js
+gdriveUtil.getFileByName(filename, function(err, res) {
+        // write your code here
+});
+```
+
+
 - deleteAllFiles(cb)
 
 This method is used to delete all files in your drive
 
-```
-gdriveUtil.deleteAllFiles(name, function(err, files) {
+```js
+gdriveUtil.deleteAllFiles(name, function(err, res) {
         // write your code here
 });
 ```
@@ -84,8 +108,8 @@ gdriveUtil.deleteAllFiles(name, function(err, files) {
 
 Delete your file name by file name
 
-```
-gdriveUtil.deleteFileByName(name, function(err, files) {
+```js
+gdriveUtil.deleteFileByName(name, function(err, res) {
         // write your code here
 });
 ```
@@ -94,8 +118,8 @@ gdriveUtil.deleteFileByName(name, function(err, files) {
 
 Delete your file name by file id
 
-```
-gdriveUtil.deleteFileById(fileId, function(err, files) {
+```js
+gdriveUtil.deleteFileById(fileId, function(err, res) {
         // write your code here
 });
 ```
@@ -104,8 +128,8 @@ gdriveUtil.deleteFileById(fileId, function(err, files) {
 
 Create a folder
 
-```
-gdriveUtil.createFolder(folderName, function(err, files) {
+```js
+gdriveUtil.createFolder(folderName, function(err, res) {
         // write your code here
 });
 ```
@@ -114,8 +138,11 @@ gdriveUtil.createFolder(folderName, function(err, files) {
 
 Check file present in your drive or not
 
-```
+```js
 gdriveUtil.isExist(filename, function(status) {
         // write your code here
 });
 ```
+
+## Support
+[<img src='https://www.ideas2it.com/images/tiny-home-images/logo.png' title='​Ideas2IT Technology Services Pvt.Ltd' height='36px'>](https://www.ideas2it.com)
